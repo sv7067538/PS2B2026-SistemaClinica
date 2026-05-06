@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #F2F2F2;
+  margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.card {
+  width: 360px;
+  margin: 40px auto;
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-top: 5px solid #2D9CDB;
+}
+
+/* TITULOS */
+.card h2 {
+  text-align: center;
+  color: #1B6CA8;
+  margin-bottom: 15px;
+}
+
+/* INPUTS */
+.card input {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.card input:focus {
+  border-color: #2D9CDB;
+}
+
+/* BOTÓN PRINCIPAL */
+.card button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #27AE60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.card button:hover {
+  background: #219150;
+}
+
+/* LISTA CITAS */
+.list-item {
+  background: #F9F9F9;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border-left: 4px solid #2D9CDB;
+}
+
+/* BOTÓN CANCELAR */
+.cancel {
+  background: #E74C3C !important;
+  margin-top: 8px;
+}
+
+.cancel:hover {
+  background: #c0392b !important;
+}
