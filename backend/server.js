@@ -35,7 +35,7 @@ app.post("/signup", (req, res) => {
       const hash = await bcrypt.hash(password, 10);
 
       db.query(
-        "INSERT INTO usuarios (nombre_usuario, contrasena, rol, email) VALUES (?, ?, ?, ?)",
+        "INSERT INTO usuarios (nombre, password, rol, email) VALUES (?, ?, ?, ?)",
         [nombre_usuario, hash, "paciente", email],
         (err, result) => {
           if (err) return res.status(500).json({ error: "Error servidor" });

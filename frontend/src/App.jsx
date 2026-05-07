@@ -1,26 +1,37 @@
-import { useRef } from 'react';
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Servicios from "./components/Servicios";
-import Footer from "./components/Footer";
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Servicios from './components/Servicios';
+import Footer from './components/Footer';
+import Login from './Login';
+import Signup from './Signup';
+import ForgotPassword from './components/ForgotPassword';
+import VerifyCode from './components/VerifyCode';
+import ResetPassword from './components/ResetPassword';
+import PasswordSuccess from './components/PasswordSuccess';
+import Paciente from './pages/Paciente';
 
 function App() {
-  const serviciosRef = useRef(null);
-
-  const scrollToServicios = () => {
-    serviciosRef.current?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-  };
   return (
     <>
-      <Navbar onServiciosClick={scrollToServicios}/>
-      <Hero />
-      <Servicios ref={serviciosRef}/>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <Servicios />
+          </>
+        } />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/verify-code" element={<VerifyCode />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/password-success" element={<PasswordSuccess />} />
+        <Route path="/completar-perfil" element={<Paciente />} />
+      </Routes>
       <Footer />
     </>
-    
   );
 }
 

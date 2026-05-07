@@ -51,9 +51,12 @@ function Footer() {
             <p>adminclinica@gmail.com</p>
           </div>
         </div>
-      </div>
 
-      <p className="footer-copyright">© 2026 Clínica Uroclinic</p>
+        {/*Copyright dentro del container */}
+        <div className="footer-copyright">
+          <p>© 2026 Clínica Uroclinic</p>
+        </div>
+      </div>
     </footer>
   );
 }

@@ -1,5 +1,5 @@
 -- ================= CREAR BASE DE DATOS =================
-CREATE DATABASE IF NOT EXISTS clinica_db;
+CREATE DATABASE IF NOT EXISTS clinica_bd;
 USE clinica_db;
 
 -- ================= TABLA: especialidad =================
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS clinica (
 CREATE TABLE IF NOT EXISTS usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre_usuario VARCHAR(50) UNIQUE NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
+     VARCHAR(255) NOT NULL,
     rol ENUM('admin', 'medico', 'recepcionista', 'paciente') DEFAULT 'paciente',
     email VARCHAR(150),
     estado TINYINT(1) DEFAULT 1,

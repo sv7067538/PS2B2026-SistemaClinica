@@ -71,3 +71,38 @@ body {
 .cancel:hover {
   background: #c0392b !important;
 }
+.full-width {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  background: white;
+}
+
+/* Estilos para PhoneInput */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 5px;
+  background: white;
+}
+
+.PhoneInputInput {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  flex: 1;
+  background: transparent;
+}
+
+.PhoneInputInput:focus {
+  outline: none;
+}
+
+.PhoneInputCountry {
+  margin-right: 10px;
+  margin-left: 10px;
+}
