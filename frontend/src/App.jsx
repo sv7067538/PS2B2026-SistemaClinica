@@ -10,6 +10,8 @@ import VerifyCode from './components/VerifyCode';
 import ResetPassword from './components/ResetPassword';
 import PasswordSuccess from './components/PasswordSuccess';
 import Paciente from './pages/Paciente';
+import Dashboard  from './pages/Dashboard';
+import MisCitas from './pages/MisCitas';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/password-success" element={<PasswordSuccess />} />
         <Route path="/completar-perfil" element={<Paciente />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/mis-citas" element={<MisCitas />} />
       </Routes>
       <Footer />
     </>
