@@ -25,7 +25,7 @@ function Paciente() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/paciente", form);
+      await axios.post("http://localhost:3000/pacientes", form);
       alert("Paciente guardado correctamente");
     } catch (err) {
       alert(err.response?.data?.error || "Error");
