@@ -13,6 +13,7 @@ import Paciente from './pages/Paciente';
 import Dashboard  from './pages/Dashboard';
 import MisCitas from './pages/MisCitas';
 
+
 function App() {
   return (
     <>
@@ -33,6 +34,7 @@ function App() {
         <Route path="/completar-perfil" element={<Paciente />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mis-citas" element={<MisCitas />} />
+        <Route path="/medico/dashboard" element={<MedicoDashboard />} />
       </Routes>
       <Footer />
     </>

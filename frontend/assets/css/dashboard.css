@@ -218,46 +218,34 @@ body {
 
 /* --- Right Sidebar --- */
 .sidebar-right {
-    width: 160px;
-    background-color: #2980b9;
-    color: white;
+    width: 280px;
+    background-color: #2980b9; /* Azul del panel derecho */
+    color: #000; /* Texto negro según el mockup */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 10px;
-    gap: 8px;
-    border-radius: 12px;
-    margin: 20px 10px;
-    align-self: flex-start;
+    padding: 50px 20px;
 }
 
-
-
 .profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    text-align: center;
     width: 100%;
 }
 
 .large-avatar {
-    width: 100%;
-    height: 100%;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
 }
 
 .avatar-icon {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: rgba(3, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 110px;
+    color: #2980b9;
+    -webkit-text-stroke: 3px #00d2ff;
 }
 
 .avatar-ring {
@@ -266,24 +254,21 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 4px solid #00d2ff; 
+    border: 4px solid #00d2ff; /* Color cyan para el anillo */
     border-radius: 50%;
 }
 
 .profile-name {
-    font-size: 0.85rem;
-    text-align: center;
-    word-break: break-word;
-    color: white;
-    margin: 0;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #000;
 }
 
 .profile-role {
-    font-size: 0.75rem;
-    text-align: center;
-    opacity: 0.85;
-    color: white;
-    margin: 0;
+    font-size: 0.9rem;
+    color: #111;
+    font-weight: 500;
 }
 
 /* --- Modal --- */
@@ -439,30 +424,7 @@ body {
     display: flex;
     gap: 10px;
 }
-.btn-ver-citas {
-  background-color: #2f86b6;
-  color: white;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.btn-buscar-citas {
-  background-color: #028f0d;
-  color: white;
-  border: none;
-  padding: 5px 3px;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.btn-ver-citas:hover {
-  background-color: #1e6b96;
-  transform: scale(1.05);
-}
+
 .tab-btn {
     background-color: #e0e0e0;
     border: none;
@@ -592,42 +554,7 @@ body {
 .bg-green {
     background-color: #2ecc71;
 }
-/* LISTA CITAS */
-.list-item {
-  background: #F9F9F9;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border-left: 4px solid #2D9CDB;
-}
-.estado-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    margin-top: 5px;
-}
 
-.estado-pendiente { background-color: #fff3cd; color: #856404; }
-.estado-confirmada { background-color: #d1e7dd; color: #0f5132; }
-.estado-cancelada { background-color: #f8d7da; color: #842029; }
-.estado-completada { background-color: #cfe2ff; color: #084298; }
-/* NOTIFICACIONES */
-.notification-item.no-leida {
-    background-color: #f0f7ff;
-    border-left: 3px solid #2980b9;
-}
-
-.badge {
-    background-color: #e53e3e;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    margin-left: 5px;
-}
 /* --- Datos del paciente Section --- */
 .patient-data-container {
     display: flex;
