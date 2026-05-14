@@ -54,6 +54,7 @@ function Login() {
                 const perfilData = await perfilResponse.json();
                 
                 if (perfilData.completado) {
+                    localStorage.setItem('paciente', JSON.stringify(perfilData.paciente));
                     navigate(data.redirect);
                 } else {
                     navigate('/completar-perfil');

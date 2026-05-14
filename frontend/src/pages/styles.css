@@ -53,14 +53,6 @@ body {
   background: #219150;
 }
 
-/* LISTA CITAS */
-.list-item {
-  background: #F9F9F9;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border-left: 4px solid #2D9CDB;
-}
 
 /* BOTÓN CANCELAR */
 .cancel {

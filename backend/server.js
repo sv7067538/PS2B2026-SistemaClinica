@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const db = require("./db");
 
 const app = express();
+const notificacionRoutes = require('./routes/notificaciones');
+app.use('/api/notificaciones', notificacionRoutes);
 
 app.use(cors());
 app.use(express.json());

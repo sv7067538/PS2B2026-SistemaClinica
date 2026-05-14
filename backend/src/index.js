@@ -11,13 +11,16 @@ const pacienteRoutes = require('./routes/pacientes');
 const medicoRoutes = require('./routes/medicos');
 const citaRoutes = require('./routes/citas');
 const passwordRoutes = require('./routes/passwordRoutes'); 
+const especialidadRoutes = require('./routes/especialidades');
+const notificacionRoutes = require('./routes/notificaciones');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 // Middlewares
 app.use(cors({
-    origin: 'http://localhost:5173',  // ← CAMBIADO: puerto de Vite
+    origin: 'http://localhost:5173',  
     credentials: true
 }));
 app.use(express.json());
@@ -60,7 +63,8 @@ app.post('/api/signup', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error del servidor' });
     }
 });
-
+app.use('/api/notificaciones', notificacionRoutes);
+app.use('/api/especialidades', especialidadRoutes);
 // Endpoint de login (CON LOGS)
 app.post('/api/login', async (req, res) => {
     console.log('=== LOGIN ===');
@@ -130,13 +134,13 @@ app.get('/api/pacientes/usuario/:id_usuario', async (req, res) => {
     
     try {
         const [paciente] = await db.query(
-            'SELECT id_paciente FROM paciente WHERE id_usuario = ?',
+            'SELECT * FROM paciente WHERE id_usuario = ?',
             [id_usuario]
         );
         
         res.json({ 
             completado: paciente.length > 0,
-            existe: paciente.length > 0
+            paciente: paciente.length > 0 ? paciente[0]:null
         });
     } catch (error) {
         console.error(error);
