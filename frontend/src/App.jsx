@@ -12,7 +12,12 @@ import PasswordSuccess from './components/PasswordSuccess';
 import Paciente from './pages/Paciente';
 import Dashboard  from './pages/Dashboard';
 import MisCitas from './pages/MisCitas';
-
+import MedicoDashboard from './pages/MedicoDashboard';
+import DoctorDashboard from './pages/DoctorDashboard';
+import MedicoCitas from './pages/MedicoCitas';
+import MedicoPacientes from './pages/MedicoPacientes';
+import CrearHistorial from './pages/CrearHistorial';
+import HistorialClinico from './pages/HistorialClinico';
 
 function App() {
   return (
@@ -35,6 +40,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mis-citas" element={<MisCitas />} />
         <Route path="/medico/dashboard" element={<MedicoDashboard />} />
+        <Route path="/medico/dashboard" element={<MedicoDashboard />} />
+<Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+<Route path="/medico/citas" element={<MedicoCitas />} />
+<Route path="/medico/pacientes" element={<MedicoPacientes />} />
+<Route path="/medico/crear-historial" element={<CrearHistorial />} />
+<Route path="/medico/historial" element={<HistorialClinico />} />
       </Routes>
       <Footer />
     </>
