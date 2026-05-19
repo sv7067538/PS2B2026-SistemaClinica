@@ -6,7 +6,7 @@ function MedicoPacientes() {
   const [historial, setHistorial] = useState([]);
   const [pacienteSeleccionado, setPacienteSeleccionado] = useState(null);
 
-  const id_medico = 1;
+  const id_medico = 2;
 
   useEffect(() => {
     axios
