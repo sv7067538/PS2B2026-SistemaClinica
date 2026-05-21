@@ -8,25 +8,32 @@
 }
 
 body {
-    background-color: #f0f0f0; /* Color gris claro para el fondo principal */
+    background: #eef3f8;
 }
 
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
 .dashboard-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
+    background: #eef3f8;
 }
 
-/* --- Topbar --- */
+/* =========================
+   TOPBAR
+========================= */
 .topbar {
-    background-color: #3498db; /* Azul claro */
+    background: linear-gradient(135deg, #1b6ca8, #14507c);
     color: white;
-    padding: 10px 30px;
+    padding: 14px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 70px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     z-index: 10;
 }
 
@@ -36,150 +43,154 @@ body {
     gap: 15px;
     font-weight: 800;
     font-size: 1.3rem;
-    letter-spacing: 0.5px;
 }
 
 .logo-circle {
-    width: 35px;
-    height: 35px;
-    background-color: white;
-    color: #3498db;
-    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    backdrop-filter: blur(6px);
 }
 
 .user-menu .user-icon-small {
-    width: 40px;
-    height: 40px;
-    background-color: #27ae60; /* Verde */
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #27ae60, #1e874b);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #2ecc71;
-    font-size: 1.2rem;
     color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(39,174,96,0.3);
 }
 
-/* --- Dashboard Body --- */
+/* =========================
+   BODY
+========================= */
 .dashboard-body {
     display: flex;
     flex: 1;
     overflow: hidden;
 }
 
-/* --- Left Sidebar --- */
+/* =========================
+   SIDEBAR IZQUIERDO
+========================= */
 .sidebar-left {
-    width: 150px;
-    background-color: #2980b9; /* Azul medio oscuro */
+    width: 240px;
+    background: linear-gradient(180deg, #1b6ca8, #144a75);
     color: white;
-    display: flex;
-    flex-direction: column;
+    padding-top: 20px;
+    box-shadow: 4px 0 18px rgba(0,0,0,0.08);
 }
 
 .side-nav {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    gap: 10px;
+    padding: 0 15px;
 }
 
 .side-nav a {
     color: white;
     text-decoration: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 20px 10px;
-    text-align: center;
-    gap: 12px;
-    font-size: 0.85rem;
+    gap: 14px;
+    padding: 15px;
+    border-radius: 14px;
+    font-size: 0.95rem;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: 0.25s ease;
+    background: rgba(255,255,255,0.05);
 }
 
-.side-nav a:hover, .side-nav a.active {
-    background-color: #1f5f8b; /* Azul oscuro para el hover/activo */
+.side-nav a:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateX(4px);
 }
 
-/* Ajuste del icono para 'Inicio' en el mockup es negro */
-.side-nav a.active i {
-    color: #000;
+.side-nav a.active {
+    background: white;
+    color: #1b6ca8;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
+
 .side-nav a i {
-    font-size: 2.2rem;
-    color: transparent;
-    -webkit-text-stroke: 1.5px white; /* Para dar estilo de linea como en el mockup */
-}
-/* Excepción para inicio que se ve rellenado de negro */
-.side-nav a.active i {
-    color: #000;
-    -webkit-text-stroke: 0px;
+    font-size: 1.3rem;
 }
 
-/* --- Main Content --- */
+/* =========================
+   MAIN CONTENT
+========================= */
 .main-content {
     flex: 1;
-    background-color: #f2f2f2;
-    padding: 30px 50px;
+    background: #eef3f8;
+    padding: 35px;
     overflow-y: auto;
 }
 
-.content-header h1 {
+.content-header h1,
+.content-header-miscitas h1 {
     font-size: 2.2rem;
-    color: #000;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.content-header h2 {
-    font-size: 1.8rem;
-    color: #222;
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-
-.welcome-text {
-    font-size: 1.5rem;
-    color: #222;
-    margin-bottom: 30px;
-}
-
-.quick-actions h3 {
-    font-size: 1.8rem;
-    color: #000;
+    color: #1b4f72;
     margin-bottom: 10px;
     font-weight: 700;
 }
 
+.content-header h2 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+.welcome-text {
+    font-size: 1rem;
+    color: #6b7b8c;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   ACTION CARDS
+========================= */
+.quick-actions h3 {
+    font-size: 1.5rem;
+    color: #1b4f72;
+    margin-bottom: 18px;
+}
+
 .action-cards-container {
     display: flex;
-    gap: 20px;
-    border: 3px solid #000;
-    padding: 25px;
-    background-color: transparent;
-    border-radius: 4px;
+    gap: 22px;
 }
 
 .card {
     flex: 1;
-    border-radius: 8px;
+    border-radius: 18px;
     overflow: hidden;
-    border: 2px solid #000;
     display: flex;
     flex-direction: column;
-    min-height: 180px;
+    min-height: 190px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .card-header {
-    padding: 10px 5px;
+    padding: 16px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
     color: white;
-    font-size: 0.9rem;
-    border-bottom: 2px solid #000;
+    font-size: 1rem;
 }
 
 .card-icon {
@@ -187,44 +198,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 4rem;
+    color: white;
 }
 
-.card-icon i {
-    font-size: 4.5rem;
-    color: #000;
-}
-
-/* Colors for cards */
 .green-card {
-    background-color: #2ecc71;
-}
-.green-card .card-header {
-    background-color: #27ae60;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
 }
 
 .light-blue-card {
-    background-color: #3498db;
-}
-.light-blue-card .card-header {
-    background-color: #2980b9;
+    background: linear-gradient(135deg, #3498db, #2980b9);
 }
 
 .dark-blue-card {
-    background-color: #1f5f8b;
-}
-.dark-blue-card .card-header {
-    background-color: #154360;
+    background: linear-gradient(135deg, #1f5f8b, #154360);
 }
 
-/* --- Right Sidebar --- */
+/* =========================
+   SIDEBAR DERECHO
+========================= */
 .sidebar-right {
-    width: 280px;
-    background-color: #2980b9; /* Azul del panel derecho */
-    color: #000; /* Texto negro según el mockup */
+    width: 300px;
+    background: white;
+    border-left: 1px solid #e5eaf0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
 .profile-section {
@@ -233,77 +232,221 @@ body {
 }
 
 .large-avatar {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 30px;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, #1b6ca8, #14507c);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.avatar-icon {
-    font-size: 110px;
-    color: #2980b9;
-    -webkit-text-stroke: 3px #00d2ff;
-}
-
-.avatar-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 4px solid #00d2ff; /* Color cyan para el anillo */
-    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(27,108,168,0.25);
 }
 
 .profile-name {
     font-size: 1.4rem;
-    margin-bottom: 8px;
     font-weight: 700;
-    color: #000;
+    color: #1b4f72;
+    margin-bottom: 8px;
 }
 
 .profile-role {
-    font-size: 0.9rem;
-    color: #111;
-    font-weight: 500;
+    font-size: 0.95rem;
+    color: #6b7b8c;
+    margin-bottom: 8px;
 }
 
-/* --- Modal --- */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
+/* =========================
+   LISTA DE CITAS
+========================= */
+.miscitas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.appointment-card {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    border-left: 5px solid #1b6ca8;
+    transition: 0.25s ease;
+}
+
+.appointment-card:hover {
+    transform: translateY(-3px);
+}
+
+.appointment-date {
+    font-size: 1rem;
+    color: #7b8a9a;
+    margin-bottom: 6px;
+}
+
+.appointment-doctor {
+    font-size: 1.5rem;
+    color: #1b4f72;
+    margin-bottom: 8px;
+}
+
+.appointment-specialty {
+    color: #4f5b67;
+    margin-bottom: 12px;
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.estado-pendiente {
+    background: #fff4d6;
+    color: #c58b00;
+}
+
+.estado-confirmada {
+    background: #dff7e8;
+    color: #1e874b;
+}
+
+.estado-cancelada {
+    background: #ffe2e2;
+    color: #c0392b;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.btn-cancelar,
+.btn-ver-citas,
+.btn-agregar-cita {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-bottom: 10px;
+}
+.btn-las-citas{
+    border: none;
+    padding: 12px 12px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #448ec7, #14507c);
+    color: white;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.btn-cancelar {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.btn-ver-citas,
+.btn-agregar-cita {
+    background: linear-gradient(135deg, #1b6ca8, #14507c);
+    color: white;
+    box-shadow: 0 4px 12px rgba(27,108,168,0.2);
+}
+
+/* =========================
+   NOTIFICACIONES
+========================= */
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.notification-item {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.05);
+}
+
+.notification-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.4rem;
+}
+
+.bg-yellow {
+    background: #fff4d6;
+}
+
+.bg-green {
+    background: #dff7e8;
+}
+
+/* =========================
+   DATOS PACIENTE
+========================= */
+.patient-data-container {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.patient-large-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.patient-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.patient-details-list p {
+    color: #34495e;
+    font-size: 1rem;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 .modal-content {
-    background-color: #f2f2f2;
+    background: white;
     width: 90%;
-    max-width: 700px;
-    border: 6px solid #3498db;
-    position: relative;
-    padding: 20px 40px 40px;
+    max-width: 650px;
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .modal-header h2 {
-    font-size: 1.8rem;
-    color: #000;
+    color: #1b4f72;
 }
 
 .close-btn {
@@ -311,274 +454,62 @@ body {
     border: none;
     font-size: 2rem;
     cursor: pointer;
-    color: #333;
-}
-
-.modal-body {
-    display: flex;
-    gap: 30px;
-}
-
-.modal-icon {
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .modal-form {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .form-group label {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    color: #000;
+    font-weight: 600;
+    color: #34495e;
 }
 
-.form-group input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 5px 0;
-    font-size: 0.9rem;
-    color: #666;
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid #d6dde8;
+    background: #fafcfe;
     outline: none;
 }
 
-.modal-date-action {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 10px;
+.form-group textarea {
+    resize: vertical;
 }
 
-.date-group label {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #000;
-    display: block;
-    margin-bottom: 15px;
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1100px) {
+    .sidebar-right {
+        display: none;
+    }
 }
 
-.date-inputs {
-    display: flex;
-    gap: 10px;
-}
+@media (max-width: 768px) {
+    .dashboard-body {
+        flex-direction: column;
+    }
 
-.date-part {
-    width: 50px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    text-align: center;
-    background-color: white;
-}
+    .sidebar-left {
+        width: 100%;
+    }
 
-.date-part.year {
-    width: 70px;
-}
+    .action-cards-container {
+        flex-direction: column;
+    }
 
-.btn-agregar-cita {
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.9rem;
-    align-self: flex-start;
-}
-
-/* --- Mis Citas Section --- */
-.content-header-miscitas {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-}
-
-.content-header-miscitas h1 {
-    font-size: 2.2rem;
-    color: #000;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.miscitas-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.tabs {
-    display: flex;
-    gap: 10px;
-}
-
-.tab-btn {
-    background-color: #e0e0e0;
-    border: none;
-    padding: 8px 15px;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-}
-
-.tab-btn.active {
-    background-color: #d0d0d0;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    background-color: #ebdce2; /* Ligeramente morado/rosado según mockup, o un gris claro */
-    background-color: #e8e0e6;
-    padding: 8px 15px;
-    border-radius: 20px;
-    gap: 10px;
-    width: 250px;
-}
-
-.search-bar input {
-    border: none;
-    background: transparent;
-    flex: 1;
-    outline: none;
-    font-size: 0.9rem;
-}
-
-.miscitas-list {
-    background-color: #e6e6e6; /* Fondo gris para la lista */
-    padding: 30px;
-    border-radius: 5px;
-}
-
-.appointment-card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 10px;
-    position: relative;
-}
-
-.appointment-avatar img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.appointment-details {
-    flex: 1;
-}
-
-.appointment-date {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.appointment-doctor {
-    font-size: 1.8rem;
-    color: #111;
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-
-.appointment-specialty {
-    font-size: 1.4rem;
-    color: #333;
-}
-
-.appointment-action {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-.btn-contactar {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-/* --- Notificaciones Section --- */
-.notifications-list {
-    background-color: #f2f2f2;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.notification-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #000;
-}
-
-.notification-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: #000;
-    border: 1px solid #000;
-}
-
-.bg-yellow {
-    background-color: #f1c40f;
-}
-
-.bg-green {
-    background-color: #2ecc71;
-}
-
-/* --- Datos del paciente Section --- */
-.patient-data-container {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0;
-}
-
-.patient-large-icon {
-    font-size: 10rem;
-    color: #111;
-    margin-bottom: 20px;
-}
-
-.patient-details-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.patient-details-list p {
-    font-size: 1.5rem;
-    color: #111;
-}
-
-.patient-details-list strong {
-    font-weight: 700;
+    .main-content {
+        padding: 20px;
+    }
 }

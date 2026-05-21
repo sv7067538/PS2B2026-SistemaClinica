@@ -2,7 +2,9 @@ import { useState } from "react";
 import MedicoCitas from "./MedicoCitas";
 import MedicoPacientes from "./MedicoPacientes";
 import HistorialClinico from "./HistorialClinico";
-
+import FormularioHistorial from "./CrearHistorial";
+import './MedicoDashboard.css';
+import CrearHistorial from "./CrearHistorial";
 function MedicoDashboard() {
   const [vista, setVista] = useState("citas");
 
@@ -10,6 +12,8 @@ function MedicoDashboard() {
     <div style={styles.container}>
       
       {/* SIDEBAR */}
+      <div className="medico-container">
+      <div className="medico-sidebar">
       <div style={styles.sidebar}>
         <h2 style={styles.title}>🏥 Médico</h2>
 
@@ -24,16 +28,22 @@ function MedicoDashboard() {
         <button style={styles.btn} onClick={() => setVista("historial")}>
           📄 Historial
         </button>
+        <button style={styles.btn} onClick={() => setVista("crearhistorial")}>
+          📄 Crear Historial
+        </button>
       </div>
-
+</div>
+    </div>
       {/* CONTENIDO */}
       <div style={styles.content}>
         {vista === "citas" && <MedicoCitas />}
         {vista === "pacientes" && <MedicoPacientes />}
         {vista === "historial" && <HistorialClinico />}
+        {vista === "crearhistorial" && <CrearHistorial />}
       </div>
 
     </div>
+    
   );
 }
 

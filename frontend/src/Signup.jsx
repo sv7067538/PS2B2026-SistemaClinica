@@ -9,17 +9,22 @@ function Signup() {
     nombre: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    rol: "paciente", 
+    codigo_verificacion: ""
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [mostrarCodigo, setMostrarCodigo] = useState(false);
   const handleChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
     });
     setError("");
+    if (e.target.name === "rol") {
+        setMostrarCodigo(e.target.value === "medico");
+    }
   };
 
   const handleSubmit = async e => {
@@ -36,14 +41,18 @@ function Signup() {
       setError("La contraseña debe tener al menos 6 caracteres");
       return;
     }
-
+    if (form.rol === "medico" && form.codigo_verificacion !== "MED2026") {
+        setError("Código de verificación inválido");
+        return;
+    }
     setLoading(true);
 
     try {
       const res = await axios.post("http://localhost:5000/api/signup", {
         nombre: form.nombre,
         email: form.email,
-        password: form.password
+        password: form.password,
+        rol: form.rol
       });
 
       alert(res.data.message || "Registro exitoso");
@@ -100,7 +109,14 @@ function Signup() {
           onChange={handleChange}
           required
         />
+        <select className="full" name="rol" value={form.rol} onChange={handleChange} required>
+            <option value="paciente">Paciente</option>
+            <option value="medico">Personal Médico</option>
+        </select>
 
+        {mostrarCodigo && (
+            <input className="full" name="codigo_verificacion" type="password" placeholder="Código de verificación" onChange={handleChange} required />
+        )}
         <div className="full">
           <button className="btn" type="submit" disabled={loading}>
             {loading ? "Registrando..." : "Registrarse"}

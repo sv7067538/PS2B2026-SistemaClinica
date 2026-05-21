@@ -13,11 +13,9 @@ import Paciente from './pages/Paciente';
 import Dashboard  from './pages/Dashboard';
 import MisCitas from './pages/MisCitas';
 import MedicoDashboard from './pages/MedicoDashboard';
-import DoctorDashboard from './pages/DoctorDashboard';
-import MedicoCitas from './pages/MedicoCitas';
-import MedicoPacientes from './pages/MedicoPacientes';
-import CrearHistorial from './pages/CrearHistorial';
-import HistorialClinico from './pages/HistorialClinico';
+import PerfilMedico from './CompletarPerfilMedico';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 
 function App() {
   return (
@@ -25,11 +23,43 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={
-          <>
+          <PublicRoute>
             <Hero />
             <Servicios />
-          </>
+          </PublicRoute>
         } />
+<Route path="/login" element={
+  <PublicRoute>      
+    <Login />
+  </PublicRoute>     
+} />
+
+<Route path="/signup" element={
+  <PublicRoute>      
+    <Signup />
+  </PublicRoute>       
+} />
+
+<Route path="/dashboard" element={
+  <ProtectedRoute>  
+    <Dashboard />
+  </ProtectedRoute>   
+} />
+
+// "/mis-citas" — agregar ProtectedRoute
+<Route path="/mis-citas" element={
+  <ProtectedRoute>    
+    <MisCitas />
+  </ProtectedRoute>   
+} />
+
+<Route path="/medico/dashboard" element={
+  <ProtectedRoute>    
+    <MedicoDashboard />
+  </ProtectedRoute>    
+} />
+
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -40,12 +70,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mis-citas" element={<MisCitas />} />
         <Route path="/medico/dashboard" element={<MedicoDashboard />} />
-        <Route path="/medico/dashboard" element={<MedicoDashboard />} />
-<Route path="/doctor/dashboard" element={<DoctorDashboard />} />
-<Route path="/medico/citas" element={<MedicoCitas />} />
-<Route path="/medico/pacientes" element={<MedicoPacientes />} />
-<Route path="/medico/crear-historial" element={<CrearHistorial />} />
-<Route path="/medico/historial" element={<HistorialClinico />} />
+        <Route path="/completar-perfil-medico" element={<PerfilMedico />} />
       </Routes>
       <Footer />
     </>

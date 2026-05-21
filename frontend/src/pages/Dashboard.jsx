@@ -292,9 +292,9 @@ const marcarTodasLeidas = async () => {
             <div className="miscitas-controls">
                 <div className="tabs">
                     {['todas', 'proximas', 'pasadas'].map(tab => (
-                        <button
+                        <button 
                             key={tab}
-                            className={`tab-btn ${tabActiva === tab ? 'active' : ''}`}
+                            className={`btn-las-citas tab-btn ${tabActiva === tab ? 'active' : ''}`}
                             onClick={() => setTabActiva(tab)}
                         >
                             {tab === 'todas' ? 'Todas las citas' : tab === 'proximas' ? 'Proximas citas' : 'Citas pasadas'}

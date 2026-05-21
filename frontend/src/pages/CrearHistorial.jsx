@@ -20,7 +20,7 @@ function CrearHistorial() {
 
   const guardar = async () => {
     try {
-     await axios.post("http://localhost:3000/historial", form);
+     await axios.post("http://localhost:5000/api/historial", form);
       alert("Historial guardado correctamente");
     } catch {
       alert("Error al guardar");
@@ -30,7 +30,7 @@ function CrearHistorial() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>🩺 Crear Historial Clínico</h2>
+        <h2 style={styles.title}>Crear Historial Clínico</h2>
 
         <input
           style={styles.input}
@@ -78,50 +78,74 @@ function CrearHistorial() {
 const styles = {
   container: {
     minHeight: "100vh",
-    background: "linear-gradient(135deg, #1B6CA8, #2980B9)",
+    background: "#EEF3F8",
+    padding: "35px",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    fontFamily: "'Segoe UI', sans-serif"
   },
+
   card: {
-    background: "#fff",
-    padding: "30px",
-    borderRadius: "12px",
-    width: "400px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+    background: "#FFFFFF",
+    padding: "35px",
+    borderRadius: "22px",
+    width: "100%",
+    maxWidth: "850px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
     display: "flex",
     flexDirection: "column",
-    gap: "10px"
+    gap: "18px",
+    borderTop: "6px solid #1B6CA8"
   },
+
   title: {
-    textAlign: "center",
-    color: "#1B6CA8",
-    marginBottom: "10px"
+    color: "#1B4F72",
+    marginBottom: "10px",
+    fontSize: "30px",
+    fontWeight: "700",
+    borderBottom: "1px solid #E5EAF0",
+    paddingBottom: "15px",
   },
+
   input: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-    fontSize: "14px"
+    padding: "14px 16px",
+    borderRadius: "12px",
+    border: "1px solid #D6DDE8",
+    fontSize: "15px",
+    outline: "none",
+    background: "#FAFCFE",
+    transition: "0.25s ease",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.03)"
   },
+
   textarea: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-    fontSize: "14px",
-    minHeight: "60px",
-    resize: "none"
+    padding: "14px 16px",
+    borderRadius: "12px",
+    border: "1px solid #D6DDE8",
+    fontSize: "15px",
+    minHeight: "110px",
+    resize: "vertical",
+    outline: "none",
+    background: "#FAFCFE",
+    transition: "0.25s ease",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
+    fontFamily: "'Segoe UI', sans-serif",
+    lineHeight: "1.7"
   },
+
   button: {
     marginTop: "10px",
-    padding: "12px",
-    background: "#27AE60",
+    padding: "14px",
+    background: "linear-gradient(135deg, #27AE60, #1E874B)",
     color: "#fff",
     border: "none",
-    borderRadius: "6px",
+    borderRadius: "12px",
     fontSize: "16px",
+    fontWeight: "600",
     cursor: "pointer",
-    transition: "0.3s"
+    transition: "0.25s ease",
+    boxShadow: "0 5px 14px rgba(39,174,96,0.25)"
   }
 };
 

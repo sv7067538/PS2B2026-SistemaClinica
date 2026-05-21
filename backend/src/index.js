@@ -13,6 +13,7 @@ const citaRoutes = require('./routes/citas');
 const passwordRoutes = require('./routes/passwordRoutes'); 
 const especialidadRoutes = require('./routes/especialidades');
 const notificacionRoutes = require('./routes/notificaciones');
+const historialRoutes = require('./routes/historial');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -47,16 +48,19 @@ app.post('/api/signup', async (req, res) => {
         if (existingUser.length > 0) {
             return res.status(400).json({ success: false, message: 'El correo ya está registrado' });
         }
-
+        // Validar rol (si es paciente o medico)
+        const rolPermitido = req.body.rol || 'paciente';
+        if (!['paciente', 'medico'].includes(rolPermitido)) {
+            return res.status(400).json({ success: false, message: 'Rol no válido' });
+        }
         // Encriptar contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
         
         // Insertar nuevo usuario
         const [result] = await db.query(
-            'INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, "paciente")',
-            [nombre, email, hashedPassword]
+            'INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)',
+            [nombre, email, hashedPassword, rolPermitido]
         );
-
         res.status(201).json({ success: true, message: 'Usuario registrado exitosamente' });
     } catch (error) {
         console.error('Error en signup:', error);
@@ -147,6 +151,110 @@ app.get('/api/pacientes/usuario/:id_usuario', async (req, res) => {
         res.status(500).json({ completado: false, error: error.message });
     }
 });
+// ==================== MEDICO ====================
+// Endpoint para verificar si el personal medico tiene perfil completo
+app.get('/api/medicos/usuario/:id_usuario', async (req, res) => {
+    const { id_usuario } = req.params;
+    
+    try {
+        const [medico] = await db.query(
+            'SELECT * FROM personal_medico WHERE id_usuario = ?',
+            [id_usuario]
+        );
+        
+        res.json({ 
+            completado: medico.length > 0,
+            medico: medico.length > 0 ? medico[0] : null
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ completado: false, error: error.message });
+    }
+});
+// Endpoint para completar perfil del medico
+app.post('/api/medicos', async (req, res) => {
+    const { nombre, apellido, telefono, email, cargo, id_especialidad, id_clinica, id_usuario } = req.body;
+
+    if (!nombre || !apellido || !id_especialidad || !id_usuario) {
+        return res.status(400).json({ message: 'Faltan datos requeridos' });
+    }
+
+    try {
+        const [result] = await db.query(
+            `INSERT INTO personal_medico 
+            (nombre, apellido, telefono, email, cargo, id_especialidad, id_clinica, id_usuario) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            [nombre, apellido, telefono, email, cargo, id_especialidad, id_clinica, id_usuario]
+        );
+        
+        res.json({ success: true, message: "Perfil médico completado", id: result.insertId });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al guardar: " + error.message });
+    }
+});
+// Endpoint para obtener especialidades
+app.get('/api/especialidades', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT id_especialidad, nombre FROM especialidad ORDER BY nombre');
+        res.json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+//Endpoint para obtener la clinica
+app.get('/api/clinicas', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT id_clinica, nombre FROM clinica ORDER BY nombre');
+        res.json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+// Endpoint para obtener citas por médico
+app.get('/api/citas/medico/:id_medico', async (req, res) => {
+    const { id_medico } = req.params;
+    
+    try {
+        const [rows] = await db.query(
+            `SELECT c.*, p.nombre as paciente_nombre, p.apellido as paciente_apellido 
+             FROM citas c
+             JOIN paciente p ON c.id_paciente = p.id_paciente
+             WHERE c.id_medico = ?
+             ORDER BY c.fecha DESC, c.hora DESC`,
+            [id_medico]
+        );
+        res.json({ success: true, data: rows });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+// Confirmar cita
+app.put('/api/citas/:id/confirmar', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.query('UPDATE citas SET estado = "Confirmada" WHERE id_cita = ?', [id]);
+        res.json({ success: true, message: "Cita confirmada" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Completar cita
+app.put('/api/citas/:id/completar', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.query('UPDATE citas SET estado = "Completada" WHERE id_cita = ?', [id]);
+        res.json({ success: true, message: "Cita completada" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+// Endpoint historial
+app.use('/api/historial', historialRoutes);
 // ==================== RUTAS ====================
 
 // Rutas existentes

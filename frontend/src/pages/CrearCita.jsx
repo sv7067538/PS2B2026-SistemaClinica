@@ -19,7 +19,7 @@ function CrearCita() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/citas", form);
+      await axios.post("http://localhost:5000/api/citas", form);
       alert("Cita creada correctamente");
     } catch {
       alert("Error al crear cita");

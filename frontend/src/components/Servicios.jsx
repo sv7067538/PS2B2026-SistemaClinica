@@ -82,7 +82,7 @@ function Servicios() {
 
         <div className="grid">
           {lista.map((item, index) => (
-            <div className="card" key={index} onClick={() => abrirModal(item)}>
+            <div className="servicio-card" key={index} onClick={() => abrirModal(item)}>
               {item}
             </div>
           ))}

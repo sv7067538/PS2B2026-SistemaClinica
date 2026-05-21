@@ -40,30 +40,43 @@ function Login() {
             const data = await response.json();
 
              if (data.success) {
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            
-            // Verificar si el usuario tiene perfil completado
-            try {
-                const perfilResponse = await fetch(`http://localhost:5000/api/pacientes/usuario/${data.user.id}`, {
-                    headers: { 
-                        'Authorization': `Bearer ${data.token}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const perfilData = await perfilResponse.json();
-                
-                if (perfilData.completado) {
-                    localStorage.setItem('paciente', JSON.stringify(perfilData.paciente));
-                    navigate(data.redirect);
-                } else {
-                    navigate('/completar-perfil');
-                }
-            } catch (error) {
-                console.error('Error verificando perfil:', error);
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    
+    try {
+        let perfilCompletado = false;
+        
+        if (data.user.rol === 'medico') {
+            const perfilResponse = await fetch(`http://localhost:5000/api/medicos/usuario/${data.user.id}`, {
+                headers: { 'Authorization': `Bearer ${data.token}` }
+            });
+            const perfilData = await perfilResponse.json();
+            perfilCompletado = perfilData.completado;
+        } else {
+            const perfilResponse = await fetch(`http://localhost:5000/api/pacientes/usuario/${data.user.id}`, {
+                headers: { 'Authorization': `Bearer ${data.token}` }
+            });
+            const perfilData = await perfilResponse.json();
+            perfilCompletado = perfilData.completado;
+        }
+        
+        if (!perfilCompletado) {
+            if (data.user.rol === 'medico') {
+                navigate('/completar-perfil-medico');
+            } else {
                 navigate('/completar-perfil');
             }
-            } else {
+        } else {
+            navigate(data.redirect);
+        }
+    } catch (error) {
+        if (data.user.rol === 'medico') {
+            navigate('/completar-perfil-medico');
+        } else {
+            navigate('/completar-perfil');
+        }
+    }
+} else {
                 // Mostrar error específico por campo
                 if (data.field) {
                     setErrors(prev => ({ ...prev, [data.field]: data.message }));

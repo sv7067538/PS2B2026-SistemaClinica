@@ -6,16 +6,16 @@ function MisCitas() {
   const [citas, setCitas] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/citas/1")
+    axios.get("http://localhost:5000/apicitas/1")
       .then(res => setCitas(res.data));
   }, []);
 
   const cancelar = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/citas/${id}`);
+      await axios.put(`http://localhost:5000/api/citas/${id}`);
       alert("Cita cancelada");
 
-      const res = await axios.get("http://localhost:3000/citas/1");
+      const res = await axios.get("http://localhost:5000/api/citas/1");
       setCitas(res.data);
     } catch {
       alert("Error al cancelar");
